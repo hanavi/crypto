@@ -5,7 +5,7 @@ import json
 import requests
 import sys
 
-with open("api_key.txt") as fd:
+with open("/home/james/files/projects/crypto/api_key.txt") as fd:
     api_key = fd.readline().strip()
 
 api_url = "https://api.nomics.com/v1/"
