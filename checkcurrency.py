@@ -36,9 +36,9 @@ def get_api_prices():
 def print_currency_value(local_currency, currency_prices):
 
     output = "Currency".rjust(9)
-    output += "Value".rjust(9)
-    output += "Qty.".rjust(14)
+    output += "Qty.".rjust(13)
     output += "Cost".rjust(10)
+    output += "Value".rjust(15)
 
     print()
     print("="*50)
@@ -60,9 +60,9 @@ def print_currency_value(local_currency, currency_prices):
                 total += value
                 output = ""
                 output += f" {currency_id}".rjust(6)
-                output += ": " + f"${value:.2f}".rjust(11)
-                output += "   " + f"{currency_amount}".rjust(11)
+                output += ":    " + f"{currency_amount}".rjust(11)
                 output += f"{currency_cost}".rjust(10)
+                output += f"${value:,.2f}".rjust(15)
 
                 print(output)
                 break
@@ -71,10 +71,10 @@ def print_currency_value(local_currency, currency_prices):
     profit_percent = profit/total_cost*100
 
     print("-"*50)
-    print(f"  Total:    ${total:0.2f}")
-    print(f"   Cost:    ${total_cost:0.2f}")
+    print("  Total:" + f"${total:,.2f}".rjust(15))
+    print("   Cost:" + f"${total_cost:,.2f}".rjust(15))
     print("-"*50)
-    print(f" Profit:    ${profit:0.2f}", end='')
+    print(f" Profit:" + f"${profit:,.2f}".rjust(15), end='')
     print(f"{profit_percent:0.1f}%".rjust(23))
     print("="*50)
     print()
