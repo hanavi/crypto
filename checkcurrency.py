@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/home/james/.local/python3.6/venv/bin/python
 # -*- coding: utf-8 -*-
 
 import json
@@ -36,14 +36,15 @@ def get_api_prices():
 def print_currency_value(local_currency, currency_prices):
 
     output = "Currency".rjust(9)
-    output += "Qty.".rjust(13)
-    output += "Cost".rjust(10)
+    output += "Cost".rjust(17)
+    output += "Qty.".rjust(15)
+    output += "Price".rjust(18)
     output += "Value".rjust(15)
 
     print()
-    print("="*50)
+    print("="*79)
     print(output)
-    print("-"*50)
+    print("-"*79)
     total = 0
     total_cost = 0
     for currency_id, currency_info in local_currency.items():
@@ -60,8 +61,10 @@ def print_currency_value(local_currency, currency_prices):
                 total += value
                 output = ""
                 output += f" {currency_id}".rjust(6)
-                output += ":    " + f"{currency_amount}".rjust(11)
-                output += f"{currency_cost}".rjust(10)
+                output += ":    "
+                output += f"{currency_cost}".rjust(15)
+                output += f"{currency_amount}".rjust(15)
+                output += f"{entry['price']}".rjust(18)
                 output += f"${value:,.2f}".rjust(15)
 
                 print(output)
@@ -70,13 +73,13 @@ def print_currency_value(local_currency, currency_prices):
     profit = total - total_cost
     profit_percent = profit/total_cost*100
 
-    print("-"*50)
+    print("-"*79)
     print("  Total:" + f"${total:,.2f}".rjust(15))
     print("   Cost:" + f"${total_cost:,.2f}".rjust(15))
-    print("-"*50)
+    print("-"*79)
     print(f" Profit:" + f"${profit:,.2f}".rjust(15), end='')
     print(f"{profit_percent:0.1f}%".rjust(23))
-    print("="*50)
+    print("="*79)
     print()
 
 
